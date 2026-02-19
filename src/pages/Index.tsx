@@ -1,14 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import AssessmentFlow from "@/components/AssessmentFlow";
+import ResultPage from "@/components/ResultPage";
+
+type Page = "home" | "assessment" | "result";
 
 const Index = () => {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
+  const [page, setPage] = useState<Page>("home");
+  const [score, setScore] = useState(0);
+
+  const handleComplete = (answers: number[]) => {
+    const total = answers.reduce((sum, a) => sum + a, 0);
+    setScore(total);
+    setPage("result");
+  };
+
+  const handleRestart = () => {
+    setScore(0);
+    setPage("home");
+  };
+
+  if (page === "assessment") {
+    return (
+      <AssessmentFlow
+        onComplete={handleComplete}
+        onBack={() => setPage("home")}
+      />
+    );
+  }
+
+  if (page === "result") {
+    return <ResultPage score={score} onRestart={handleRestart} />;
+  }
+
+  return <HeroSection onStart={() => setPage("assessment")} />;
 };
 
 export default Index;
