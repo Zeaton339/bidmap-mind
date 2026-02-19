@@ -7,22 +7,22 @@ interface HeroSectionProps {
 }
 
 const features = [
-  {
-    icon: Brain,
-    title: "科学量表",
-    desc: "基于贝克抑郁量表（BDI-II），国际公认的抑郁筛查工具",
-  },
-  {
-    icon: Shield,
-    title: "隐私保护",
-    desc: "所有数据仅在本地处理，不会上传至任何服务器",
-  },
-  {
-    icon: Clock,
-    title: "快速完成",
-    desc: "仅需5-10分钟，共21道题目即可完成评估",
-  },
-];
+{
+  icon: Brain,
+  title: "科学量表",
+  desc: "基于贝克抑郁量表（BDI-II），国际公认的抑郁筛查工具"
+},
+{
+  icon: Shield,
+  title: "隐私保护",
+  desc: "所有数据仅在本地处理，不会上传至任何服务器"
+},
+{
+  icon: Clock,
+  title: "快速完成",
+  desc: "仅需5-10分钟，共21道题目即可完成评估"
+}];
+
 
 const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
@@ -38,8 +38,8 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+            transition={{ duration: 0.8, ease: "easeOut" }}>
+
             <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4">
               专业心理健康自评工具
             </p>
@@ -56,18 +56,18 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          >
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}>
+
             <Button
               size="lg"
               onClick={onStart}
-              className="bg-hero-gradient text-primary-foreground px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-shadow group"
-            >
+              className="bg-hero-gradient text-primary-foreground px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-shadow group">
+
               开始测评
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <p className="mt-4 text-sm text-muted-foreground">
-              免费 · 匿名 · 约5分钟完成
+               快速 · 匿名 · 约5分钟完成
             </p>
           </motion.div>
         </div>
@@ -76,14 +76,14 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
       {/* Features */}
       <section className="px-4 pb-20">
         <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
-              className="bg-card rounded-2xl p-6 shadow-[var(--card-shadow)] hover:shadow-[var(--card-shadow-hover)] transition-shadow"
-            >
+          {features.map((f, i) =>
+          <motion.div
+            key={f.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
+            className="bg-card rounded-2xl p-6 shadow-[var(--card-shadow)] hover:shadow-[var(--card-shadow-hover)] transition-shadow">
+
               <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
                 <f.icon className="w-6 h-6 text-primary" />
               </div>
@@ -94,7 +94,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
                 {f.desc}
               </p>
             </motion.div>
-          ))}
+          )}
         </div>
       </section>
 
@@ -109,8 +109,8 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           </p>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default HeroSection;
