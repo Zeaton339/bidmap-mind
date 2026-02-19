@@ -68,10 +68,10 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
               transition={{ duration: 0.3, ease: "easeInOut" }}>
 
               <p className="text-sm text-muted-foreground mb-2 font-medium">
-                第 {question.id} 题
+                请选择最符合您近两周感受的选项
               </p>
               <h2 className="text-xl md:text-2xl font-serif font-semibold mb-8 text-foreground">
-                请选择最符合您近两周感受的选项
+                第 {question.id} 题 · {question.title}
               </h2>
 
               <div className="space-y-3">
