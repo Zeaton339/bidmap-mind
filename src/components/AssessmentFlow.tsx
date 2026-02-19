@@ -17,7 +17,7 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
   );
 
   const question = bdiQuestions[current];
-  const progress = ((current + 1) / bdiQuestions.length) * 100;
+  const progress = (current + 1) / bdiQuestions.length * 100;
   const allAnswered = answers.every((a) => a !== null);
 
   const selectAnswer = (value: number) => {
@@ -44,8 +44,8 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
         <div className="flex items-center justify-between mb-2">
           <button
             onClick={current === 0 ? onBack : () => setCurrent(current - 1)}
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+
             <ChevronLeft className="w-4 h-4" />
             {current === 0 ? "返回首页" : "上一题"}
           </button>
@@ -65,8 +65,8 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
+              transition={{ duration: 0.3, ease: "easeInOut" }}>
+
               <p className="text-sm text-muted-foreground mb-2 font-medium">
                 第 {question.id} 题
               </p>
@@ -84,33 +84,33 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
                       whileTap={{ scale: 0.99 }}
                       onClick={() => selectAnswer(idx)}
                       className={`w-full text-left p-5 rounded-xl border-2 transition-all duration-200 ${
-                        isSelected
-                          ? "border-primary bg-primary/5 shadow-md"
-                          : "border-border bg-card hover:border-primary/30 hover:bg-card/80"
-                      }`}
-                    >
-                      <div className="flex items-start gap-4">
-                        <span
-                          className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
-                            isSelected
-                              ? "bg-primary text-primary-foreground"
-                              : "bg-muted text-muted-foreground"
-                          }`}
-                        >
-                          {idx}
-                        </span>
+                      isSelected ?
+                      "border-primary bg-primary/5 shadow-md" :
+                      "border-border bg-card hover:border-primary/30 hover:bg-card/80"}`
+                      }>
+
+                      <div className="gap-4 flex items-center justify-center">
+                        
+
+
+
+
+
+
+
+
                         <span
                           className={`text-base leading-relaxed pt-1 ${
-                            isSelected
-                              ? "text-foreground font-medium"
-                              : "text-foreground/80"
-                          }`}
-                        >
+                          isSelected ?
+                          "text-foreground font-medium" :
+                          "text-foreground/80"}`
+                          }>
+
                           {stmt}
                         </span>
                       </div>
-                    </motion.button>
-                  );
+                    </motion.button>);
+
                 })}
               </div>
             </motion.div>
@@ -121,41 +121,41 @@ const AssessmentFlow = ({ onComplete, onBack }: AssessmentFlowProps) => {
       {/* Navigation */}
       <div className="max-w-2xl mx-auto w-full mt-8 flex justify-between items-center">
         <div className="flex gap-2">
-          {current > 0 && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrent(current - 1)}
-            >
+          {current > 0 &&
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setCurrent(current - 1)}>
+
               <ChevronLeft className="w-4 h-4 mr-1" />
               上一题
             </Button>
-          )}
+          }
         </div>
         <div className="flex gap-2">
-          {current < bdiQuestions.length - 1 && answers[current] !== null && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrent(current + 1)}
-            >
+          {current < bdiQuestions.length - 1 && answers[current] !== null &&
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setCurrent(current + 1)}>
+
               下一题
               <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
-          )}
-          {current === bdiQuestions.length - 1 && (
-            <Button
-              onClick={handleSubmit}
-              disabled={!allAnswered}
-              className="bg-hero-gradient text-primary-foreground"
-            >
+          }
+          {current === bdiQuestions.length - 1 &&
+          <Button
+            onClick={handleSubmit}
+            disabled={!allAnswered}
+            className="bg-hero-gradient text-primary-foreground">
+
               查看结果
             </Button>
-          )}
+          }
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default AssessmentFlow;
